@@ -1,69 +1,65 @@
 # SoftProductivity — iOS App
 
-A beautiful, modern productivity app built with **SwiftUI** that faithfully recreates the neumorphic / soft-UI design from the provided mockups.
+A beautiful, modern productivity app built with **SwiftUI** that faithfully recreates the soft neumorphic design from the provided iPhone mockups (Welcome / Dashboard + Schedule views).
 
-![Design Mockup](design_mockup.jpg)
+> Original design reference: two side-by-side iPhone mockups showing a clean productivity UI with performance charts, project cards, today’s tasks, weekly calendar and hourly event timeline.
 
 ## Features
 
 - **Home Dashboard**
   - Personalized welcome (“Welcome, Salung”)
   - Soft search bar with filter
-  - Performance card with mini chart + live +3.45% badge
-  - Projects section with interactive-style cards (line+bar chart & icon variants)
-  - Today’s tasks list with status, avatars, and time
+  - Performance card with mini bar chart + live **+3.45%** green badge
+  - Projects section with two card styles (line+bar chart & icon variants)
+  - Today’s tasks list with status, avatar stacks, and time
 
-- **Schedule View** (opened via calendar icon)
+- **Schedule View** (opened via the calendar icon on Home)
   - Month picker (November 2026)
-  - Interactive week day selector
-  - Hourly timeline with color-coded event cards
+  - Interactive week-day selector (Thu 20 selected)
+  - Hourly timeline (9 AM – 8 PM) with color-coded event cards
   - Status labels (In Progress / Upcoming)
-  - Avatar stacks & time ranges
+  - Avatar stacks & precise time ranges
+  - Detailed review card with multi-line description
 
 - **Custom Floating Bottom Navigation**
   - Home · Analytics · Chat · Profile
-  - Prominent floating “+” button that opens a New Item sheet
+  - Prominent floating black “+” button that opens a New Item sheet
 
 - **Soft Neumorphic Design System**
   - Warm light-gray background
-  - Soft dual shadows (light + dark)
-  - Generous corner radii (18–28pt)
+  - Soft dual shadows (light + dark) for the neumorphic feel
+  - Generous continuous corner radii (18–28 pt)
   - Orange / green accent palette matching the original design
   - Fully light-mode optimized
 
-## Screenshots of the original design
-
-The original side-by-side iPhone mockups are included as `design_mockup.jpg`.
-
 ## How to Run
 
-1. Open **Xcode 15+** (iOS 17+ recommended for best Charts support).
+1. Open **Xcode 15+** (iOS 17+ recommended — uses Swift Charts).
 2. Create a new **iOS App** project:
    - Product Name: `SoftProductivity`
    - Interface: **SwiftUI**
    - Language: **Swift**
-   - Uncheck “Include Tests” if you want a clean slate.
-3. Delete the default `ContentView.swift` and `SoftProductivityApp.swift` that Xcode generates.
-4. Copy the entire contents of the `SoftProductivity/` folder from this repository into your project’s root (or drag the files into the Xcode navigator).
-5. Make sure all files are added to the app target.
-6. Build & run on any iPhone simulator (or device).
+3. Delete the default `ContentView.swift` and `*App.swift` that Xcode generates.
+4. Copy the entire `SoftProductivity/` folder from this repository into your Xcode project (or drag the files into the Project Navigator and check “Copy items if needed”).
+5. Ensure every Swift file is added to the app target.
+6. Build & run on any iPhone simulator or device.
 
-> **Tip:** The project uses the native `Charts` framework (iOS 16+). No third-party dependencies.
+> **No third-party dependencies.** Uses only SwiftUI + the native Charts framework (iOS 16+).
 
 ## Project Structure
 
 ```
 SoftProductivity/
-├── SoftProductivityApp.swift      # App entry point
-├── ContentView.swift              # Tab root + placeholders + New Item sheet
+├── SoftProductivityApp.swift          # @main entry point
+├── ContentView.swift                  # Root + tab switching + New Item sheet + placeholders
 ├── Models/
-│   ├── Models.swift               # Project, TaskItem, ScheduleEvent + sample data
-│   └── Theme.swift                # SoftTheme colors + SoftCard modifier
+│   ├── Models.swift                   # Project, TaskItem, ScheduleEvent + sample data
+│   └── Theme.swift                    # SoftTheme colors + SoftCard ViewModifier
 └── Views/
-    ├── HomeView.swift
-    ├── ScheduleView.swift
+    ├── HomeView.swift                 # Dashboard
+    ├── ScheduleView.swift             # Full-screen schedule with timeline
     └── Components/
-        ├── BottomNavBar.swift
+        ├── BottomNavBar.swift         # Floating capsule nav + offset +
         ├── SearchBar.swift
         ├── PerformanceCard.swift
         ├── ProjectCard.swift
@@ -71,25 +67,26 @@ SoftProductivity/
         └── EventCard.swift
 ```
 
-## Customization
+## Customization Tips
 
-- Change the user name in `HomeView` and `ProfilePlaceholder`.
-- Swap sample data in `Models.swift`.
-- Adjust colors in `Theme.swift` — everything is centralized.
-- The “+” button already presents a simple create sheet; extend it as needed.
+- Change the user name “Salung” in `HomeView` and `ProfilePlaceholder`.
+- Edit sample data in `Models.swift`.
+- All colors live in `Theme.swift` — tweak once and the whole app updates.
+- The “+” button already presents a simple create sheet; expand it for real creation flows.
+- Want real avatars? Drop images into Assets.xcassets and replace the `person.fill` SF Symbols.
 
-## Design Notes
+## Design Fidelity
 
-The UI deliberately stays very close to the original mock:
+The implementation deliberately mirrors the original mock:
 
-- Same hierarchy and card layout
+- Same visual hierarchy and card layout
 - Matching orange performance chart & green positive indicators
-- Same event card style with left accent bars and avatar stacks
-- Floating capsule nav + offset black “+” button
-- Soft continuous corner radii and dual-direction shadows for the neumorphic feel
+- Event cards with left accent bars, avatar stacks, ellipsis menus
+- Floating capsule bottom nav with the large offset black “+”
+- Soft continuous corner radii and dual-direction shadows for that soft-UI / neumorphic aesthetic
 
-Enjoy building on top of it! 🚀
+Clone, open in Xcode, and run. Enjoy!
 
 ---
 
-Made with ❤️ by Grok · Design fidelity recreation · August 2026
+Made with ❤️ by Grok · Design-faithful recreation · August 2026
